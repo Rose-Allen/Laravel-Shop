@@ -27,7 +27,7 @@ class CategoryRequest extends FormRequest
             'name' => 'required',
             'slug' => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'meta_title' => 'required',
             'meta_keyword' => 'required',
             'meta_description' => 'required',
