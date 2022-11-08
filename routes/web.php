@@ -41,5 +41,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     });
     Route::get('/brands', App\Http\Livewire\Admin\Brand\Index::class)->name('admin.brand.index');
 
+    Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix('product')->group(function (){
+        Route::get('/', 'index')->name('admin.product.index');
+        Route::get('create', 'create')->name('admin.product.create');
+        Route::post('/', 'store')->name('admin.product.store');
+    });
 
 });
