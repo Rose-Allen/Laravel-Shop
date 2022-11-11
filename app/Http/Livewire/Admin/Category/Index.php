@@ -36,7 +36,7 @@ class Index extends Component
 
     public function render()
     {
-        $categories = Category::paginate(1);
+        $categories = Category::paginate(10);
         return view('livewire.admin.category.index', compact('categories'));
     }
 

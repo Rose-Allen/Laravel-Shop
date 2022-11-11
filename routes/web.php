@@ -24,12 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
-//
-//    Route::prefix('category')->group(function (){
-//        Route::get('/', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.category.index');
-//        Route::get('/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin.category.create');
-//        Route::post('/', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('admin.category.store');
-//    });
+
 
     Route::controller(App\Http\Controllers\Admin\CategoryController::class)->prefix('category')->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
@@ -41,10 +36,14 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     });
     Route::get('/brands', App\Http\Livewire\Admin\Brand\Index::class)->name('admin.brand.index');
 
-    Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix('product')->group(function (){
+    Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix('product')->group(function () {
         Route::get('/', 'index')->name('admin.product.index');
         Route::get('create', 'create')->name('admin.product.create');
         Route::post('/', 'store')->name('admin.product.store');
+        Route::get('/{product}/edit', 'edit')->name('admin.product.edit');
+        Route::patch('/{product}', 'update')->name('admin.product.update');
+        Route::get('/{product}', 'destroy')->name('admin.product.delete');
+        Route::get('product-image/{productImage}/delete', 'destroyImage')->name('admin.product.destroyImage');
     });
 
 });

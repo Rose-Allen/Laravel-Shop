@@ -28,7 +28,6 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $data = $request->validated();
-
         try {
             DB::beginTransaction();
             $data['image'] = Storage::disk('public')->put('/images', $data['image']);
