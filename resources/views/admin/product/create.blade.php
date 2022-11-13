@@ -32,6 +32,12 @@
                                         aria-controls="pills-image" aria-selected="false">Product Image
                                 </button>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-color-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-color" type="button" role="tab"
+                                        aria-controls="pills-color" aria-selected="false">Product Color
+                                </button>
+                            </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade border p-3 show active" id="pills-home" role="tabpanel"
@@ -167,10 +173,40 @@
 
                                 <div class="mb-3">
                                     <label>Upload Product Image</label>
-                                    <input type="file" class="form-control" name="image[]" multiple >
+                                    <input type="file" class="form-control" name="image[]" multiple>
                                     @error('image')
                                     <div class="text-danger">Необходимо заполнить поле!</div>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="tab-pane fade border p-3" id="pills-color" role="tabpanel"
+                                 aria-labelledby="pills-details-tab">
+
+                                <div class="mb-3">
+                                    <label>Select Color</label>
+                                    <hr/>
+                                    <div class="row">
+                                        @forelse($colors as $color)
+                                            <div class="col-md-3">
+                                                <div class="p-2 border mb-3">
+                                                    Color: <input type="checkbox" name="colors[{{$color->id}}]" value="{{$color->id}}">
+                                                    {{$color->name}}
+                                                    <br/>
+                                                    Quantity: <input type="number" name="colorquantity[{{$color->id}}]"
+                                                                     style="width: 70px; border: 1px solid">
+                                                </div>
+
+                                            </div>
+                                        @empty
+                                            <div class="col-md-12">
+                                                Colors Not Found
+                                            </div>
+                                        @endforelse
+                                    </div>
+{{--                                    <input type="file" class="form-control" name="image[]" multiple>--}}
+{{--                                    @error('image')--}}
+{{--                                    <div class="text-danger">Необходимо заполнить поле!</div>--}}
+{{--                                    @enderror--}}
                                 </div>
                             </div>
                         </div>
