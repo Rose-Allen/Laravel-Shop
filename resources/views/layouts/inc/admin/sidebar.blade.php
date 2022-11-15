@@ -40,7 +40,12 @@
                 <span class="menu-title">Colors</span>
             </a>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.slider.index')}}">
+                <i class="mdi mdi-view-carousel menu-icon"></i>
+                <span class="menu-title">Slider</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="mdi mdi-account-multiple-plus menu-icon"></i>

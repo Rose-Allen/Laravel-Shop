@@ -58,6 +58,16 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/{color}', 'destroy')->name('admin.color.delete');
     });
 
+    Route::controller(App\Http\Controllers\Admin\SliderController::class)->prefix('slider')->group(function (){
+        Route::get('/', 'index')->name('admin.slider.index');
+        Route::get('/create', 'create')->name('admin.slider.create');
+        Route::post('/', 'store')->name('admin.slider.store');
+        Route::get('/{slider}/edit', 'edit')->name('admin.slider.edit');
+        Route::patch('/{slider}', 'update')->name('admin.slider.update');
+        Route::get('/{slider}', 'destroy')->name('admin.slider.delete');
+
+    });
+
 
 
 });
