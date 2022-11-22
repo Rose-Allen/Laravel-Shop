@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'index'])->name('index');
+Route::get('/categories', [App\Http\Controllers\FrontEnd\FrontEndController::class, 'categories'])->name('categories');
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
