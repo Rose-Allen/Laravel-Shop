@@ -22,5 +22,7 @@ class Category extends Model
         'status',
     ];
 //    protected $guarded = false;
-
+    public function products(){
+        return $this->hasMany(Product::class, 'category_id', 'id');
+    }
 }

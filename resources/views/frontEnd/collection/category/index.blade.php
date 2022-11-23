@@ -10,7 +10,7 @@
                 @foreach($categories as $category)
                     <div class="col-6 col-md-3">
                         <div class="category-card">
-                            <a href="{{url('/collections/'. $category->slug)}}">
+                            <a href="{{route('category.product', $category->slug)}}">
                                 <div class="category-card-img">
                                     <img src="{{'storage/'. $category->image}}" class="w-100" alt="Laptop">
                                 </div>

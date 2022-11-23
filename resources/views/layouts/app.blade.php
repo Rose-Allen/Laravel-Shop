@@ -6,8 +6,11 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="meta_keyword" content="@yield('meta_description')">
+    <meta name="keywords" content="@yield('meta_keyword')">
+    <meta name="author" content="@yield('Laravel Shop')">
     <title>@yield('title')</title>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -15,6 +18,7 @@
 
     <!-- Scripts -->
     <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/product.css')}}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     @vite('resources/sass/app.scss')
 
