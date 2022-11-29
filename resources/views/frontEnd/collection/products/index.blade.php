@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <h4 class="mb-4">Наши Товары</h4>
                 </div>
-                @livewire('front-end.product.index', ['products' => $products, 'category'=>$category] )
+                @livewire('front-end.product.index', ['category'=>$category] )
             </div>
         </div>
     </div>

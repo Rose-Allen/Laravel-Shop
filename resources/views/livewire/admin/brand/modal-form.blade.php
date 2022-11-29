@@ -11,6 +11,18 @@
             <form wire:submit.prevent="storeBrand">
                 <div class="modal-body">
                     <div class="mb-3">
+                        <label>Select Category</label>
+                        <select wire:model.defer="category_id" required class="form-control">
+                            <option value="">--Select Category--</option>
+                            @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                        <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label>Brand Name</label>
                         <input type="text" class="form-control" placeholder="Name" wire:model.defer="name">
                         @error('name')
@@ -64,6 +76,18 @@
             <div wire:loading.remove>
                 <form wire:submit.prevent="update">
                     <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Select Category</label>
+                            <select wire:model.defer="category_id" required class="form-control">
+                                <option value="">--Select Category--</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                            <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <label>Brand Name</label>
                             <input type="text" class="form-control" placeholder="Name" wire:model.defer="name">

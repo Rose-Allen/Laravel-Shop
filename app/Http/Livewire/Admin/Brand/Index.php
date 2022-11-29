@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Brand;
 
 use App\Models\Brand;
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,7 +13,7 @@ class Index extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $name, $slug, $status, $brand_id;
+    public $name, $slug, $status, $brand_id, $category_id;
 
     public function rules()
     {
@@ -20,6 +21,7 @@ class Index extends Component
             'name' => 'required|string',
             'slug' => 'required|string',
             'status' => 'nullable',
+            'category_id'=>'required|integer'
         ];
     }
 
@@ -29,6 +31,7 @@ class Index extends Component
         $this->slug = NULL;
         $this->status = NULL;
         $this->brand_id = NULL;
+        $this->category_id = NULL;
     }
 
     public function closeModal()
@@ -43,6 +46,7 @@ class Index extends Component
             'name' => $this->name,
             'slug' => $this->slug,
             'status' => $this->status == true ? '1' : '0',
+            'category_id'=>$this->category_id,
         ]);
         session()->flash('message', "Brand Added Successfully");
         $this->dispatchBrowserEvent('close-modal');
@@ -56,6 +60,7 @@ class Index extends Component
         $this->name = $brand->name;
         $this->slug = $brand->slug;
         $this->status = $brand->status;
+        $this->category_id = $brand->category_id;
     }
 
     public function update()
@@ -65,6 +70,7 @@ class Index extends Component
             'name' => $this->name,
             'slug' => $this->slug,
             'status' => $this->status == true ? '1' : '0',
+            'category_id'=>$this->category_id,
         ]);
         session()->flash('message', "Brand Updated Successfully");
         $this->dispatchBrowserEvent('close-modal');
@@ -87,6 +93,7 @@ class Index extends Component
     public function render()
     {
         $brands = Brand::paginate(10);
-        return view('livewire.admin.brand.index', compact('brands'))->extends('layouts.admin')->section('content');
+        $categories = Category::where('status', '0')->get();
+        return view('livewire.admin.brand.index', compact('brands', 'categories'))->extends('layouts.admin')->section('content');
     }
 }

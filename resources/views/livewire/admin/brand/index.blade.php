@@ -20,6 +20,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Slug</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -30,6 +31,7 @@
                                 <th scope="row">{{$brand->id}}</th>
                                 <td>{{$brand->name}}</td>
                                 <td>{{$brand->slug}}</td>
+                                <td>{{$brand->category->name}}</td>
                                 <td>{{$brand->status == 1 ? 'Hidden' : 'Visible'}}</td>
                                 <td>
                                     <a href="#" wire:click="editBrand({{$brand->id}})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
