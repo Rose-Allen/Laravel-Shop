@@ -19,6 +19,7 @@
     <!-- Scripts -->
     <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
     <link rel="stylesheet" href="{{asset('admin/css/product.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/productView.css')}}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     @vite('resources/sass/app.scss')
 
